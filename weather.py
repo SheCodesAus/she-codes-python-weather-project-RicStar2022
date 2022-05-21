@@ -1,5 +1,6 @@
 import csv
 from datetime import datetime
+from tkinter.tix import INTEGER
 
 DEGREE_SYBMOL = u"\N{DEGREE SIGN}C"
 
@@ -13,7 +14,11 @@ def format_temperature(temp):
     Returns:
         A string contain the temperature and "degrees celcius."
     """
+    temp = compile('u"\N{DEGREE SIGN}"', '', 'eval')
     return f"{temp}{DEGREE_SYBMOL}"
+
+    pass
+
 
 
 def convert_date(iso_string):
@@ -24,10 +29,13 @@ def convert_date(iso_string):
     Returns:
         A date formatted like: Weekday Date Month Year e.g. Tuesday 06 July 2021
     """
-    pass
+    date = datetime.now()
+    return date.strftime('%A %d %B %Y')#'%Y-%m-%dT%H:%M:%S.%f%z'
 
 
-def convert_f_to_c(temp_in_farenheit):
+# def convert_f_to_c(temp_in_farenheit):
+
+def convert_f_to_c(temp_in_f):
     """Converts an temperature from farenheit to celcius.
 
     Args:
@@ -35,7 +43,11 @@ def convert_f_to_c(temp_in_farenheit):
     Returns:
         A float representing a temperature in degrees celcius, rounded to 1dp.
     """
-    pass
+    temp_in_c = (int(temp_in_f) - 32) * (5.0/9.0)
+    return round(float(temp_in_c),1) #cannot figure out how to get def test_convert_f_to_c_float(self): to work
+#     return temp_in_f
+# print(convert_f_to_c(350))
+
 
 
 def calculate_mean(weather_data):
@@ -46,7 +58,11 @@ def calculate_mean(weather_data):
     Returns:
         A float representing the mean value.
     """
-    pass
+    # if item in weather_data
+
+    count = len(weather_data)
+    sum_list = sum.float(weather_data)
+    return str(sum_list/count)
 
 
 def load_data_from_csv(csv_file):
